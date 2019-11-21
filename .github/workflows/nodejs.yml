@@ -19,22 +19,27 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Install GitBook
-      run: git --version
+   - name: Install GitBook
+      run: npm install -g gitbook-cli --registry=https://registry.npm.taobao.org
 
-#    - name: Install GitBook
-#      run: npm install -g gitbook-cli --registry=https://registry.npm.taobao.org
-#
-#    - name: Checkout source
-#      uses: actions/checkout@v1
-#      with:
-#        ref: source
-#
-#    - name: GitBook Install
-#      run: gitbook install --registry=https://registry.npm.taobao.org
-#
-#    - name: Build
-#      run: gitbook build . docs
+   - name: Checkout source
+      uses: actions/checkout@v1
+      with:
+        ref: source
+
+   - name: GitBook Install
+      run: gitbook install --registry=https://registry.npm.taobao.org
+
+   - name: Build
+      run: gitbook build . docs
+
+   - name: Publish 
+      run: |
+        git add -f docs
+        git commit -m "Deploying to master from source" --quiet
+        git push $REPOSITORY_PATH `git subtree split --prefix docs source`:master --force
+      shell: bash
+
 #
 #    - name: Publish
 #      uses: hlyani/gitbook-deploy-action@master
