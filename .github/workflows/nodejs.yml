@@ -35,7 +35,7 @@ jobs:
 
     - name: Publish 
       run: |
-        git config --global user.email "${GITHUB_ACTOR}"@163.com
+        git config --global user.email "${GITHUB_ACTOR}"
         git config --global user.name "${GITHUB_ACTOR}"
         REPOSITORY_PATH="https://${ACCESS_TOKEN:-"x-access-token:$GITHUB_TOKEN"}@github.com/${GITHUB_REPOSITORY}.git"
         git add -f docs
