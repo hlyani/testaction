@@ -27,8 +27,8 @@ jobs:
       with:
         ref: source
 
-    - name: GitBook Install
-      run: gitbook install --registry=https://registry.npm.taobao.org
+    # - name: GitBook Install
+    #   run: gitbook install --registry=https://registry.npm.taobao.org
 
     - name: Build
       run: gitbook build . docs
