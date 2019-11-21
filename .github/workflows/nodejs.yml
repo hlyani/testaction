@@ -27,8 +27,8 @@ jobs:
       with:
         ref: source
 
-    # - name: GitBook Install
-    #   run: gitbook install --registry=https://registry.npm.taobao.org
+    - name: GitBook Install
+      run: gitbook install --registry=https://registry.npm.taobao.org
 
     - name: Build
       run: gitbook build . docs
@@ -46,12 +46,3 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.testaction }}
         BASE_BRANCH: source
         BRANCH: master
-
-#
-#    - name: Publish
-#      uses: hlyani/gitbook-deploy-action@master
-#      env:
-#        ACCESS_TOKEN: ${{ secrets.testaction }}
-#        BASE_BRANCH: source
-#        BRANCH: master
-#        FOLDER: docs
